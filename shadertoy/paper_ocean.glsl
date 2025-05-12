@@ -66,8 +66,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     vec2 sun = uv-vec2(1.05,0.5);
     float rot = fract(0.25*iTime);
     float rays = sun_rays(sun, rot);
-    float puls = sin(iTime*1.5)/115.;
-    float radius = 0.29 + rays + puls;
+    float pulse = sin(iTime*1.5)/115.;
+    float radius = 0.29 + rays + pulse;
     
     for (int i = 0; i < 5; i++)
     {
@@ -75,7 +75,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
         {
             rot = -1.*rot;
             rays = sun_rays(sun, rot);
-            radius = (i > 1) ? 0.33 : 0.31 + rays + puls;
+            radius = (i > 1) ? 0.33 : 0.31 + rays + pulse;
             col = p*1.5+0.95*vec3(0.96,0.35+float(i)/5.1,0.);
         }
         col -= 0.03*min(1.,(length(sun.xy)-(radius-float(i)/15.)));
