@@ -53,7 +53,7 @@ float sun_rays(vec2 c, float r){
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord) 
 {
-    if (STOP_MOTION && mod(float(iFrame), 12.0) >= 1.) {
+    if (STOP_MOTION && mod(float(iFrame), 4.0) >= 1.) {
         discard;
     }
     vec2 uv = (2.0*fragCoord-iResolution.xy)/iResolution.y;
@@ -88,7 +88,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     //clouds
     col = draw_cloud(col,uv,1.,0.05*iTime+0.2);
     col = draw_cloud(col,uv,2.,0.05*iTime+0.5);
-    col = draw_cloud(col,uv,3.,0.05*iTime-0.15);
+    col = draw_cloud(col,uv,3.,0.05*iTime+0.85);
 
     //waves
     for (int i = 0; i <= 50; i++)
